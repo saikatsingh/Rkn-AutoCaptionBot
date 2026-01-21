@@ -54,10 +54,10 @@ if Rkn_Botz.ADMIN:
             # If ADMIN is set, notify admin on startup
             admin_ids = [Rkn_Botz.ADMIN] if isinstance(Rkn_Botz.ADMIN, int) else Rkn_Botz.ADMIN
             for id in admin_ids:
-try:
+        try:
                         await self.send_message(id, f"**📢 {me.first_name} Is STARTED.....✨️**")
-                    except Exception:
-                        pass
+                            except Exception:
+                                                pass
 
     async def stop(self, *args):
                 await super().stop()
@@ -78,5 +78,6 @@ Rkn_AutoCaptionBot().run()
 
 
 # ⚠️ Please do not remove this credit!
+
 
 

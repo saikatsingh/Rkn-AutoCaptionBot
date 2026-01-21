@@ -451,8 +451,7 @@ async def auto_caption(client, message):
 
 # ======== HELP MENU CALLBACKS ========
 
-# Dictionary for help menu messages
-HELP_MENU_BUTTONS = {
+# Dictionary for help menu message
 @Client.on_callback_query(filters.regex(r'^help_'))
 async def help_menu_handler(client, query):
     """Generic handler for all help menu buttons"""

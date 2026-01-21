@@ -139,7 +139,8 @@ async def help_cb(client, query):
     help_text = (
         "<b>📘 HELP - Available Commands</b>\n\n"
         "<b>Caption Commands:</b>\n"
-        "/set_caption - Set custom caption\n"
+        "/328
+        - Set custom caption\n"
         "/delcaption - Delete custom caption\n\n"
         "<b>Batch Commands:</b>\n"
         "/batch_edit - Edit multiple messages\n\n"
@@ -327,7 +328,7 @@ async def set_caption(client, message):
         try:
                     member = await client.get_chat_member(message.chat.id, client.me.id)
                     if member.status not in ['administrator', 'creator']:
-                                    return await message.reply('❌ I need to be admin in this channel to set captions.')
+            return await message.reply(f"❌ I need to be admin in this channel to set captions.")
     except Exception:
         return await message.reply('❌ Error: I need to be admin in this channel.')
     if len(message.command) < 2:

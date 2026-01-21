@@ -50,18 +50,17 @@ class Rkn_AutoCaptionBot(Client):
         await web.TCPSite(app, bind_address, Rkn_Botz.PORT).start()
         
         print(f"{me.first_name} Iꜱ Sᴛᴀʀᴛᴇᴅ.....✨️")
-
-if Rkn_Botz.ADMIN:
-    # If ADMIN is set, notify admin on startup
-    admin_ids = [Rkn_Botz.ADMIN] if isinstance(Rkn_Botz.ADMIN, int) else Rkn_Botz.ADMIN
-    for id in admin_ids:
-        try:
-            await self.send_message(id, f"**📢 {me.first_name} Is STARTED.....✨️**")
-        except Exception:
-            pass
-
-async def stop(self, *args):
-    await super().stop()
+                
+        if Rkn_Botz.ADMIN:
+            # If ADMIN is set, notify admin on startup
+            admin_ids = [Rkn_Botz.ADMIN] if isinstance(Rkn_Botz.ADMIN, int) else Rkn_Botz.ADMIN
+            for id in admin_ids:
+                try:
+                    await self.send_message(id, f"**📢 {me.first_name} Is STARTED.....✨️**")
+                except Exception:
+                    pass
+    async def stop(self, *args):
+                await super().stop()
     print("Bot Stopped 🙄")        
 Rkn_AutoCaptionBot().run()
 
@@ -78,6 +77,7 @@ Rkn_AutoCaptionBot().run()
 
 
 # ⚠️ Please do not remove this credit!
+
 
 
 

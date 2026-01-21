@@ -447,14 +447,51 @@ async def auto_caption(client, message):
         await message.edit_caption(formatted)
     except errors.FloodWait as e:
         await asyncio.sleep(e.value)
-        
-# ————
-# End of file
-# Original author: @RknDeveloperr
-# GitHub: https://github.com/RknDeveloper
 
-# Developer Contacts:
-# Telegram: @RknDeveloperr
+
+# ======== HELP MENU CALLBACKS ========
+
+# Dictionary for help menu messages
+HELP_MENU_BUTTONS = {
+@Client.on_callback_query(filters.regex(r'^help_'))
+async def help_menu_handler(client, query):
+    """Generic handler for all help menu buttons"""
+    await query.answer()
+    button_name = query.data.replace('help_', '')
+    
+    # Help menu messages
+    help_messages = {
+        'caption': '<b>📝 CAPTION MANAGEMENT</b>\nCustomize your channel caption format.\n\n<b>Commands:</b>\n/set_cap - Set custom caption\n/del_cap - Delete caption',
+        'font': '<b>🎨 FONT STYLING</b>\nUse HTML tags: <b>Bold</b>, <i>Italic</i>, <u>Underline</u>',
+        'language': '<b>🌐 LANGUAGE</b>\n/set_language Hindi|English|Tamil',
+        'quality': '<b>🎬 QUALITY</b>\n/set_quality WEB-DL|BluRay|HDTV',
+        'username': '<b>👤 USERNAME</b>\n/remove_usernames on/off',
+        'links': '<b>🔗 LINKS</b>\n/remove_links on/off',
+        'blacklist': '<b>🚫 BLACKLIST</b>\n/blacklist_words term1|term2',
+        'emoji': '<b>😊 EMOJI</b>\n/remove_emoji on/off',
+        'replace_word': '<b>🔄 REPLACE</b>\n/replace_words old:new',
+        'remove_word': '<b>🗑️ REMOVE WORDS</b>\n/remove_words word1|word2',
+        'prefix': '<b>🔠 PREFIX</b>\n/set_prefix [TEXT]',
+        'suffix': '<b>🔚 SUFFIX</b>\n/set_suffix [TEXT]',
+        'symbol': '<b>🔣 SYMBOLS</b>\n/remove_symbols \"symbols\"',
+        'space_line': '<b>📐 SPACE & LINE</b>\n/rem_space_line on/off',
+        'button': '<b>🔘 BUTTONS</b>\n/set_buttons [V] Text | [H] Text',
+        'extension': '<b>💾 EXTENSION</b>\n/fix_extension on/off',
+        'details': '<b>⚙️ SETTINGS</b>\n/show_details',
+        'reset': '<b>🔄 RESET</b>\n/reset_all',
+        'copy_setting': '<b>📨 COPY</b>\n/get_settings | /apply_settings',
+        'batch_edit': '<b>🗃️ BATCH EDIT</b>\n/batch_edit'
+    }
+    
+    message_text = help_messages.get(button_name, '<b>Help</b>\nFeature coming soon!')
+    
+    await query.edit_message_text(
+        text=message_text,
+        reply_markup=types.InlineKeyboardMarkup([
+            [types.InlineKeyboardButton('🔙 Back', callback_data='help')],
+            [types.InlineKeyboardButton('❌ Exit', callback_data='close')]
+        ])
+    )egram: @RknDeveloperr
 # Updates Channel: @Rkn_Bots_Updates & @Rkn_Botz
 # Special Thanks To: @ReshamOwner
 # Update Channels: @Digital_Botz & @DigitalBotz_Support

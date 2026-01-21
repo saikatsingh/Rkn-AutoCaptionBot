@@ -76,6 +76,27 @@ class Database:
             upsert=False
         )
         return result.modified_count > 0
+
+    async def update_batch_data(self, user_id: int, data: dict):
+        """Update batch operation data for user"""
+        await self._users_collection.update_one(
+            {"userId": user_id},
+            {"$set": {"batch_data": data}},
+            upsert=True
+        )
+    
+    async def get_batch_data(self, user_id: int):
+        """Get batch operation data for user"""
+        user = await self._users_collection.find_one({"userId": user_id})
+        return user.get("batch_data") if user else None
+    
+    async def clear_batch_data(self, user_id: int):
+        """Clear batch operation data"""
+        await self._users_collection.update_one(
+            {"userId": user_id},
+            {"$unset": {"batch_data": ""}}
+        )
+
         
 rkn_botz = Database()
 

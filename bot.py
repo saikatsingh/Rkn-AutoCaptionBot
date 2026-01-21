@@ -56,10 +56,11 @@ if Rkn_Botz.ADMIN:
             for id in admin_ids:
                 try:
                     await self.send_message(id, f"**📢 {me.first_name} Is STARTED.....✨️**")
-                except Exception:
-                    pass        
+except Exception:
+                    pass
+
     async def stop(self, *args):
-        await super().stop()
+                await super().stop()
         print("Bot Stopped 🙄")
         
 Rkn_AutoCaptionBot().run()
@@ -77,3 +78,4 @@ Rkn_AutoCaptionBot().run()
 
 
 # ⚠️ Please do not remove this credit!
+

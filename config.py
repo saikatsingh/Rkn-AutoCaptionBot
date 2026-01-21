@@ -12,8 +12,8 @@ import time
 class Rkn_Botz(object):
     # Rkn client config (required)
     # 👉 ei 3 ta Koyeb env-e must set korbe
-    API_ID = int(os.environ.get("API_ID", "0"))
-    API_HASH = os.environ.get("API_HASH", "")
+    API_ID = int(os.environ.get("API_ID", "29563132"))
+    API_HASH = os.environ.get("API_HASH", "b39be032fc0c567d0cda60dbea99606e")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 
     # Start pic (default image link) – chaile env diye change korte parbe
@@ -30,11 +30,11 @@ class Rkn_Botz(object):
 
     # Force subscribe channel username (without @)
     # example: FORCE_SUB=creazy_updates_zone
-    FORCE_SUB = os.environ.get("FORCE_SUB", "")
+    FORCE_SUB = os.environ.get("FORCE_SUB", "creazy_updates_zone")
 
     # Database config (required)
     DB_NAME = os.environ.get("DB_NAME", "AutoCaption_V05_Bot")
-    DB_URL = os.environ.get("DB_URL", "")
+    DB_URL = os.environ.get("DB_URL", "mongodb+srv://workwithsaikat:saikat9735@cluster0.0e5vp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
     # Default caption (with safe fallback)
     # 👉 ekhane sob variable use korte parbi: {file_name}, {default_caption}, {resolution}, {quality}, {audio}, {language}, {file_size}, {year}, {season}, {episode}, {ott}, {lib}, {extension}, {fps}, {bitrate}, {shortsub}
@@ -60,3 +60,4 @@ class Rkn_Botz(object):
 # Telegram: @RknDeveloperr
 # Updates: @Rkn_Bots_Updates & @Rkn_Botz
 # ⚠️ Please do not remove this credit!
+

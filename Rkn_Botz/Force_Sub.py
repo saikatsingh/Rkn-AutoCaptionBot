@@ -28,7 +28,7 @@ if Config.FORCE_SUB:
         def __init__(self, channel: str):
             self.channel = channel.lstrip("@")
 
-        async def __call__(self, _, client: Client, message: Message) -> bool:
+        async def __call__(self, client: Client, message: Message) -> bool:
             user_id = message.from_user.id
 
             # Register user in DB if not already

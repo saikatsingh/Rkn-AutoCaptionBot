@@ -16,6 +16,8 @@ from aiohttp import web
 from pyrogram import Client
 from config import Rkn_Botz
 from Rkn_Botz.web_support import web_server
+import asyncio
+from pyrogram.errors import FloodWait
 
 class Rkn_AutoCaptionBot(Client):
     def __init__(self):
@@ -62,8 +64,16 @@ class Rkn_AutoCaptionBot(Client):
     async def stop(self, *args):
                 await super().stop()
     print("Bot Stopped 🙄")        
-Rkn_AutoCaptionBot().run()
-
+while True:
+    try:
+        Rkn_AutoCaptionBot().run()
+    except FloodWait as fw:
+        print(f"FloodWait: Telegram is blocking requests. Waiting {fw.value} seconds...")
+        asyncio.run(asyncio.sleep(fw.value + 10))
+    except Exception as e:
+        print(f"Error occurred: {e}. Retrying in 10 seconds...")
+        import time
+        time.sleep(10)
 # ————
 # End of file
 # Original author: @RknDeveloperr
@@ -77,6 +87,7 @@ Rkn_AutoCaptionBot().run()
 
 
 # ⚠️ Please do not remove this credit!
+
 
 
 

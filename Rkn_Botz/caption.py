@@ -527,9 +527,3 @@ async def support_cb(client, query):
             [types.InlineKeyboardButton("🎱 HOME", callback_data="start")]
         ])
     )
-    ))egram: @RknDeveloperr
-# Updates Channel: @Rkn_Bots_Updates & @Rkn_Botz
-# Special Thanks To: @ReshamOwner
-# Update Channels: @Digital_Botz & @DigitalBotz_Support
-
-# ⚠️ Please do not remove this credit!

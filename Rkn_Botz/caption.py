@@ -139,8 +139,7 @@ async def help_cb(client, query):
     help_text = (
         "<b>📘 HELP - Available Commands</b>\n\n"
         "<b>Caption Commands:</b>\n"
-        "/328
-        - Set custom caption\n"
+        "/set_caption - Set custom caption\n"
         "/delcaption - Delete custom caption\n\n"
         "<b>Batch Commands:</b>\n"
         "/batch_edit - Edit multiple messages\n\n"

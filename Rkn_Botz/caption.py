@@ -327,7 +327,7 @@ async def set_caption(client, message):
         try:
                     member = await client.get_chat_member(message.chat.id, client.me.id)
                     if member.status not in ['administrator', 'creator']:
-            return await message.reply(f"❌ I need to be admin in this channel to set captions.")
+                return await message.reply(f"❌ I need to be admin in this channel to set captions.")
     except Exception:
         return await message.reply('❌ Error: I need to be admin in this channel.')
     if len(message.command) < 2:

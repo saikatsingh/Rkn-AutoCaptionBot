@@ -51,7 +51,7 @@ if Config.FORCE_SUB:
                 return False
 
     # Handler for blocked users / unsubscribed
-    @Client.on_message(filters.private & filters.create(ForceSubCheck(Config.FORCE_SUB), name="force_sub_filter"))
+    @Client.on_message(filters.private & ~filters.user(Config.ADMIN) & filters.create(ForceSubCheck(Config.FORCE_SUB), name="force_sub_filter"))
     async def handle_force_sub(client: Client, message: Message):
         user_id = message.from_user.id
         chat_link = f"https://t.me/{Config.FORCE_SUB.lstrip('@')}"

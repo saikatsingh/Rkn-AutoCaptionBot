@@ -1,5 +1,7 @@
 # AutoCaptionBot by RknDeveloper
 # Copyright (c) 2024 RknDeveloper
+
+
 # Licensed under the MIT License
 # https://github.com/RknDeveloper/Rkn-AutoCaptionBot/blob/main/LICENSE
 # Please retain this credit when using or forking this code.
@@ -405,6 +407,48 @@ def convert_size(size):
         size /= power
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'ʙ'
+
+def detect_audio(file_name):
+    match = re.search(r'\b(DDP5\.1|AAC2\.0|DTS|FLAC|AC3|MP3)\b', file_name, re.IGNORECASE)
+    return match.group(1).upper() if match else "Unknown"
+    
+def detect_fps(file_name):
+    match = re.search(r'\b(24FPS|30FPS|60FPS)\b', file_name, re.IGNORECASE)
+    return match.group(1).upper() if match else "Unknown"
+    
+def detect_bitrate(file_name):
+    match = re.search(r'\b(\d{2,3}kbps)\b', file_name, re.IGNORECASE)
+    return match.group(1).upper() if match else "Unknown"
+    
+def detect_shortsub(file_name):
+    if re.search(r'\b(Msub)\b', file_name, re.IGNORECASE):
+        return "Msub"
+    elif re.search(r'\b(Esub)\b', file_name, re.IGNORECASE):
+        return "Esub"
+    return "Unknown"
+    
+def detect_ott(file_name):
+    if re.search(r'\b(netflix|nf)\b', file_name, re.IGNORECASE):
+        return "Netflix (NF)"
+    elif re.search(r'\b(amazon|amazn|prime)\b', file_name, re.IGNORECASE):
+        return "Amazon Prime (AMAZN)"
+    elif re.search(r'\b(hotstar)\b', file_name, re.IGNORECASE):
+        return "Hotstar"
+    return "Unknown"
+    
+def detect_lib(file_name):
+    if re.search(r'\bx265\b', file_name, re.IGNORECASE):
+        return "x265"
+    elif re.search(r'\bx264\b', file_name, re.IGNORECASE):
+        return "x264"
+    elif re.search(r'\bVP9\b', file_name, re.IGNORECASE):
+        return "VP9"
+    return "Unknown"
+    
+def detect_duration(file_name):
+    match = re.search(r'\b(\d{1,2}:\d{2}:\d{2})\b', file_name)
+    return match.group(1) if match else "Unknown"
+
     
 @Client.on_message(filters.channel)
 async def auto_caption(client, message):
@@ -435,7 +479,14 @@ async def auto_caption(client, message):
                 season=detect_season(original_caption),
                 year=detect_year(original_caption),
                 quality=detect_quality(original_caption),
-                file_size=convert_size(file_size) if file_size else "Unknown",
+                file_size=convert_size(file_size) if file_size else "Unknown",,
+            audio=detect_audio(original_caption),
+            fps=detect_fps(original_caption),
+            bitrate=detect_bitrate(original_caption),
+            shortsub=detect_shortsub(original_caption),
+            ott=detect_ott(original_caption),
+            lib=detect_lib(original_caption),
+            duration=detect_duration(original_caption)
             )
         else:
             formatted = Rkn_Botz.DEFAULT_CAPTION.format(
@@ -446,6 +497,13 @@ async def auto_caption(client, message):
                 season=detect_season(original_caption),
                 year=detect_year(original_caption),
                 file_size=convert_size(file_size) if file_size else "Unknown",
+            audio=detect_audio(original_caption),
+            fps=detect_fps(original_caption),
+            bitrate=detect_bitrate(original_caption),
+            shortsub=detect_shortsub(original_caption),
+            ott=detect_ott(original_caption),
+            lib=detect_lib(original_caption),
+            duration=detect_duration(original_caption)
             )
 
         await message.edit_caption(formatted)

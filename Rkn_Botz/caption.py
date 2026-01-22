@@ -179,8 +179,8 @@ async def about_cb(client, query):
         "✅ Multi-Language Support\n"
         "✅ Channel Management\n\n"
         "<b>📞 Support:</b>\n"
-        "Channel: @Rkn_Bots_Updates\n"
-        "Support: @Rkn_Bots_Support\n"
+        "Channel: @creazy_updates_zone\n"
+        "Support: @Leazy_support_group\n"
         "GitHub: RknDeveloper/Rkn-AutoCaptionBot"
     )
     
@@ -200,7 +200,7 @@ async def add_me_cb(client, query):
     await query.edit_message_text(
         text="<b>➕ Add Bot to Channel</b>\n\nClick the link below to add me to your channel.",
         reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("➕ Add to Channel", url="https://t.me/Rkn_AutoCaption_Bot?startgroup=true")],
+            [types.InlineKeyboardButton("➕ Add to Channel", url="https://t.me/Leazy_Caption_Bot?startgroup=true")],
             [types.InlineKeyboardButton("🏠 HOME", callback_data="start")]
         ])
     )
@@ -213,7 +213,7 @@ async def update_bot_cb(client, query):
     await query.edit_message_text(
         text="<b>🔄 Bot Updates</b>\n\nVisit our channel for latest updates and features.",
         reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("📢 Updates Channel", url="https://t.me/Rkn_Bots_Updates")],
+            [types.InlineKeyboardButton("📢 Updates Channel", url="https://t.me/creazy_updates_zone")],
             [types.InlineKeyboardButton("🏠 HOME", callback_data="start")]
         ])
     )
@@ -226,7 +226,7 @@ async def support_cb(client, query):
     await query.edit_message_text(
         text="<b>💬 Support Group</b>\n\nJoin our support group for help and queries.",
         reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("💬 Support Group", url="https://t.me/Rkn_Bots_Support")],
+            [types.InlineKeyboardButton("💬 Support Group", url="https://t.me/Leazy_support_group")],
             [types.InlineKeyboardButton("🏠 HOME", callback_data="start")]
         ])
     )

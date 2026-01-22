@@ -200,7 +200,7 @@ async def add_me_cb(client, query):
     await query.edit_message_text(
         text="<b>➕ Add Bot to Channel</b>\n\nClick the link below to add me to your channel.",
         reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("➕ Add to Channel", url="https://t.me/Leazy_Caption_Bot?startgroup=true")],
+            [types.InlineKeyboardButton("➕ Add to Channel", url="https://t.me/Leazy_Caption_Bot?startchannel=true&admin=post_messages+edit_messages+delete_messages")],
             [types.InlineKeyboardButton("🏠 HOME", callback_data="start")]
         ])
     )

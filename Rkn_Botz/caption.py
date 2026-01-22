@@ -12,7 +12,7 @@
 
 # ⚠️ Please do not remove this credit!
 
-from pyrogram import Client, filters, errors, types
+from pyrogram import Client, filters, errors, types, enums
 from config import Rkn_Botz
 from .database import rkn_botz
 import asyncio, time, re, os, sys
@@ -326,7 +326,7 @@ async def batch_edit(client, message):
 async def set_caption(client, message):
     try:
         member = await client.get_chat_member(message.chat.id, client.me.id)
-        if member.status not in ["administrator", "creator"]:
+        if member.status not in [enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.CREATOR]:
             return await message.reply("❌ I need to be admin in this channel to set captions.")
     except Exception as e:
         return await message.reply(f"❌ Error: {str(e)}")

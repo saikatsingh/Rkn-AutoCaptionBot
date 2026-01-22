@@ -423,8 +423,7 @@ async def auto_caption(client, message):
     channel_id = message.chat.id
     cap_data = await rkn_botz._channels_collection.find_one({"channelId": channel_id})
     original_caption = message.caption or file_name
-
-        try:
+     try:
         if cap_data:
             custom_caption = cap_data.get("caption", "")
             formatted = custom_caption.format(

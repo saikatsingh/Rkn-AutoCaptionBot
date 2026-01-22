@@ -321,17 +321,20 @@ async def batch_edit(client, message):
         await message.reply(f"❌ Error: {str(e)}")
 
 
-# this command works on channels only 
+# this command works on channels only
 @Client.on_message(filters.command("set_caption") & filters.channel)
 async def set_caption(client, message):
-        try:
-                    member = await client.get_chat_member(message.chat.id, client.me.id)
-                    if member.status not in ['administrator', 'creator']:
-                return await message.reply(f"❌ I need to be admin in this channel to set captions.")
-except Exception:
-            return await message.reply(f"❌ Error: {str(e)}")
+    try:
+        member = await client.get_chat_member(message.chat.id, client.me.id)
+        if member.status not in ["administrator", "creator"]:
+            return await message.reply("❌ I need to be admin in this channel to set captions.")
+    except Exception as e:
+        return await message.reply(f"❌ Error: {str(e)}")
+
     if len(message.command) < 2:
-        return await message.reply("Usage: /set_caption <your caption>\nUse `{file_name}` or `{caption}`.")
+        return await message.reply(
+            "Usage: /set_caption <your caption>\nUse `{file_name}` or `{caption}`."
+        )
 
     caption = message.text.split(" ", 1)[1]
     channel_id = message.chat.id

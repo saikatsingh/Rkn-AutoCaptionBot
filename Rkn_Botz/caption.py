@@ -490,39 +490,4 @@ async def help_menu_handler(client, query):
             [types.InlineKeyboardButton('🔙 Back', callback_data='help')],
             [types.InlineKeyboardButton('❌ Exit', callback_data='close')]
         ])
-    
-    @Client.on_callback_query(filters.regex("^add_me$"))
-async def add_me_cb(client, query):
-    """Handle ADD ME button click"""
-    await query.answer()
-    invite_link = await client.export_chat_invite_link(query.message.chat.id)
-    await query.edit_message_text(
-        text="<b>➡️ Add Bot to Channel</b>\n\nClick below to add me to your channel.",
-        reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("➡️ Add to Channel", url="https://t.me/Rkn_AutoCaption_Bot?startgroup=true")],
-            [types.InlineKeyboardButton("🎱 HOME", callback_data="start")]
-        ])
-
-@Client.on_callback_query(filters.regex("^update_bot$"))
-async def update_bot_cb(client, query):
-    """Handle UPDATE button click"""
-    await query.answer()
-    await query.edit_message_text(
-        text="<b>🔄 Bot Updates</b>\n\nVisit our channel for latest updates and features.",
-        reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("📢 Updates Channel", url="https://t.me/Rkn_Bots_Updates")],
-            [types.InlineKeyboardButton("🎱 HOME", callback_data="start")]
-        ])
-    )
-
-@Client.on_callback_query(filters.regex("^support$"))
-async def support_cb(client, query):
-    """Handle SUPPORT button click"""
-    await query.answer()
-    await query.edit_message_text(
-        text="<b>💬 Support Group</b>\n\nJoin our support group for help and queries.",
-        reply_markup=types.InlineKeyboardMarkup([
-            [types.InlineKeyboardButton("💬 Support Group", url="https://t.me/Rkn_Bots_Support")],
-            [types.InlineKeyboardButton("🎱 HOME", callback_data="start")]
-        ])
     )

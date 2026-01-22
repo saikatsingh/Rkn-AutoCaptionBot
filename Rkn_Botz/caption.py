@@ -324,7 +324,7 @@ async def batch_edit(client, message):
 
 
 # this command works on channels only
-@Client.on_message(filters.command("set_caption") & filters.channel)
+@Client.on_message(filters.command("set_cap") & filters.channel)
 async def set_caption(client, message):
     try:
         member = await client.get_chat_member(message.chat.id, client.me.id)

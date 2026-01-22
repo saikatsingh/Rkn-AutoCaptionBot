@@ -447,7 +447,7 @@ async def auto_caption(client, message):
                 year=detect_year(original_caption),
                 file_size=convert_size(file_size) if file_size else "Unknown"  # ✅ Fixed
             )
-                await message.edit_caption(formatted)
+    await message.edit_caption(formatted)
 
     except errors.FloodWait as e:
         await asyncio.sleep(e.value)

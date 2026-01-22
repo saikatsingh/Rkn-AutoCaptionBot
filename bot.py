@@ -33,7 +33,8 @@ class Rkn_AutoCaptionBot(Client):
 
     async def start(self):
         await super().start()
-        me = await self.get_me()
+        self.me = await self.get_me()
+        me = self.me
         self.uptime = Rkn_Botz.BOT_UPTIME
         self.force_channel = Rkn_Botz.FORCE_SUB
         
@@ -87,6 +88,7 @@ while True:
 
 
 # ⚠️ Please do not remove this credit!
+
 
 
 

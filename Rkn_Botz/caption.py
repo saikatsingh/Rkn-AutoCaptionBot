@@ -491,3 +491,4 @@ async def help_menu_handler(client, query):
             [types.InlineKeyboardButton('❌ Exit', callback_data='close')]
         ])
     )
+

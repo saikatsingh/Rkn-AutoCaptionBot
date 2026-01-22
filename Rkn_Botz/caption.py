@@ -424,7 +424,7 @@ async def auto_caption(client, message):
     cap_data = await rkn_botz._channels_collection.find_one({"channelId": channel_id})
     original_caption = message.caption or file_name
 
-    try:
+        try:
         if cap_data:
             custom_caption = cap_data.get("caption", "")
             formatted = custom_caption.format(
@@ -435,7 +435,7 @@ async def auto_caption(client, message):
                 season=detect_season(original_caption),
                 year=detect_year(original_caption),
                 quality=detect_quality(original_caption),
-                file_size=convert_size(file_size) if file_size else "Unknown"  # ✅ Fixed
+                file_size=convert_size(file_size) if file_size else "Unknown"
             )
         else:
             formatted = Rkn_Botz.DEFAULT_CAPTION.format(
@@ -445,9 +445,10 @@ async def auto_caption(client, message):
                 episode=detect_episode(original_caption),
                 season=detect_season(original_caption),
                 year=detect_year(original_caption),
-                file_size=convert_size(file_size) if file_size else "Unknown"  # ✅ Fixed
+                file_size=convert_size(file_size) if file_size else "Unknown"
             )
-    await message.edit_caption(formatted)
+
+        await message.edit_caption(formatted)
 
     except errors.FloodWait as e:
         await asyncio.sleep(e.value)

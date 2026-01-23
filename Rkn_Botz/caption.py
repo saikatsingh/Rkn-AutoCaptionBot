@@ -479,7 +479,7 @@ async def auto_caption(client, message):
                 season=detect_season(original_caption),
                 year=detect_year(original_caption),
                 quality=detect_quality(original_caption),
-                file_size=convert_size(file_size) if file_size else "Unknown",,
+                file_size=convert_size(file_size) if file_size else 
             audio=detect_audio(original_caption),
             fps=detect_fps(original_caption),
             bitrate=detect_bitrate(original_caption),
